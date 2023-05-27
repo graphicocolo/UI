@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アコーディオン完全版 - アコーディオン</title>
+  <!-- CSS fonticon -->
+  <link rel="stylesheet" href="assets/css/iconfont.css">
+  <!-- CSS origin -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="wrapper frame mt20 mb50">
+    <div class="mt30 mb30">
+      <p class="mb30">アニメーションには GSAP を使用</p>
+      <p>ポイントは以下の通り</p>
+      <ul>
+        <li>・デフォルトの open 属性をリセットし、手動で open 属性を管理する（アコーディオンを閉じる時の挙動を制御するため）</li>
+        <li>・アコーディオンの中身(summaryタグのすぐ下)をdivタグなどで囲った部分には上下paddingを持たせないこと（アニメーションの挙動がおかしくなる）</li>
+      </ul>
+    </div>
+    <details class="js-accordion mb30">
+      <summary class="summary js-summary">
+        <span class="summary-inner">
+          <span class="summary-icon"></span>
+        </span>
+      </summary>
+      <div class="content js-content">
+        <div class="content-inner">
+          折りたたまれている箇所1です
+        </div>
+      </div>
+    </details>
+    <details class="js-accordion mb30">
+      <summary class="summary js-summary">
+        <span class="summary-inner">
+          <span class="summary-icon"></span>
+        </span>
+      </summary>
+      <div class="content js-content">
+        <div class="content-inner">
+          折りたたまれている箇所2です
+        </div>
+      </div>
+    </details>
+    <details class="js-accordion mb30">
+      <summary class="summary js-summary">
+        <span class="summary-inner">
+          <span class="summary-icon"></span>
+        </span>
+      </summary>
+      <div class="content js-content">
+        <div class="content-inner">
+          折りたたまれている箇所3です
+        </div>
+      </div>
+    </details>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+@use "../global" as g;
+
+@mixin media01($media-width) {
+  @if $media-width == pcsmall { // 小型PC 960px~
+    @media screen and (min-width: g.$bp-md) {
+      @content;
+    }
+  }
+}
+
+@mixin media02($media-width) {
+  @if $media-width == tablet { // タブレット 750px-
+    @media screen and (min-width: g.$bp-tablet) {
+      @content;
+    }
+  }
+}
+
+@mixin media03($media-width) {
+  @if $media-width == splandscape { // SP横 480px-600px
+    @media screen and (min-width: g.$bp-xs) and (max-width: g.$bp-sm) {
+      @content;
+    }
+  }
+  @else if $media-width == tablet { // タブレット 600px-960px
+    @media screen and (min-width: g.$bp-sm) and (max-width: g.$bp-md) {
+      @content;
+    }
+  }
+  @else if $media-width == pcsmall { // 小型PC 960px-1280px
+    @media screen and (min-width: g.$bp-md) and (max-width: g.$bp-lg) {
+      @content;
+    }
+  }
+  @else if $media-width == pc { // 大型PC 1280px-
+    @media screen and (min-width: g.$bp-lg) {
+      @content;
+    }
+  }
+}
+
+@mixin media04($media-width) {
+  @if $media-width == tablet { // タブレット 600px-960px
+    @media screen and (min-width: g.$bp-sm) and (max-width: g.$bp-md) {
+      @content;
+    }
+  }
+  @else if $media-width == pc { // 小型PC 960px-
+    @media screen and (min-width: g.$bp-md) {
+      @content;
+    }
+  }
+}
+
+@mixin media05($device) {
+  @if $device == mobile {
+    @media (hover: none) {
+      @content;
+    }
+  }
+  @else if $device == pc {
+    @media (hover: hover) {
+      @content;
+    }
+  }
+}

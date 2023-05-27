@@ -1,0 +1,63 @@
+@use "../mixins" as m;
+
+.btn,
+a.btn,
+button.btn {
+  font-size: calc(var(--fontsize-body) * 0.85);
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+.btn-svg,
+a.btn-svg,
+button.btn-svg {
+  line-height: 54px;
+  width: 204px;
+  height: 54px;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: transparent;
+}
+.btn-svg svg,
+a.btn-svg svg,
+button.btn-svg svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.btn-svg svg rect,
+a.btn-svg svg rect,
+button.btn-svg svg rect {
+  transition: all 400ms ease;
+  stroke: var(--black-deep);
+  stroke-width: 2;
+  stroke-dasharray: 200px, 16px;
+  stroke-dashoffset: 70px;
+}
+.btn-svg span,
+a.btn-svg span,
+button.btn-svg span {
+  font-weight: 500;
+  color: var(--black-deep);
+}
+
+@include m.media05(pc) {
+  .btn-svg:hover svg rect,
+  a.btn-svg:hover svg rect,
+  button.btn-svg:hover svg rect {
+    stroke-dashoffset: 284px;
+  }
+}

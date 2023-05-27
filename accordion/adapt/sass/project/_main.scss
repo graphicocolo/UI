@@ -1,0 +1,81 @@
+@use "../mixins" as m;
+
+summary {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: 10px;
+}
+summary::-webkit-details-marker {
+  // Safariで表示されるデフォルトの三角形アイコンを消す
+  display: none;
+}
+.summary-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 185px; // クリックで文言変更時に横幅の大きさを保つ
+  cursor: pointer;
+  background-color: var(--black-light);
+  padding: 12px 30px;
+  color: var(--white);
+  text-align: center;
+  letter-spacing: 0.1rem;
+  font-feature-settings: 'palt';
+  border-radius: 50px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  &::before {
+    content: '詳細を見る';
+  }
+  @include m.media05(pc) {
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+.summary-icon {
+  display: block;
+  position: relative;
+  width: 20px;
+  margin-left: 10px;
+  flex-shrink: 0;
+  transform-origin: center 43%;
+  transition: transform 0.4s;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 12px;
+    height: 2px;
+    background-color: var(--white);
+  }
+  &::before {
+    left: 0;
+    transform: rotate(45deg);
+  }
+  &::after {
+    right: 0;
+    transform: rotate(-45deg);
+  }
+}
+details.is-opened {
+  .summary-inner {
+    &::before {
+      content: '閉じる';
+    }
+  }
+  .summary-icon {
+    transform: rotate(180deg);
+  }  
+}
+
+.content {
+  // details直下のタグにpaddingを設定すると挙動がおかしくなるので、ここには指定しない
+  overflow: hidden;
+}
+.content-inner {
+  padding: var(--space-sm) calc(var(--space-xs) * 0.5);
+  background-color: var(--gray-ultra-light);
+}

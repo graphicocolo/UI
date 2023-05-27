@@ -1,0 +1,40 @@
+@use "../global" as g;
+@use "../mixins" as m;
+
+.frame {
+  max-width: g.$bp-lg;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  @include m.media04(tablet) {
+    padding: 0 15px;
+  }
+  @include m.media04(pc) {
+    padding: 0 20px;
+  }
+}
+.frame.-narrow {
+  max-width: g.$bp-md;
+}
+
+// 横並び（基本形）
+// 横並びから縦並びに変更するブレイクポイントを変更するには
+// mixins/flex 内でブレイクポイントを変更する必要あり
+.sideBySide {
+  @include m.flex;
+}
+
+// 横並び（中央揃え）
+.sideBySideCenter {
+  @include m.flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+// 両端揃え
+.spaceBetween {
+  @include m.flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,0 +1,6 @@
+// テキストが領域からはみ出ている場合の処理を指定するプロパティ
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,8 @@
+@use "mediaquery" as m;
+
+@mixin indention-xs {
+  display: block;
+  @include m.media02(tablet) {
+    display: inline;
+  }
+}

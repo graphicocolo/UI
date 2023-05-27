@@ -1,0 +1,108 @@
+// 目次
+// --------------------
+// ブレイクポイント
+// --------------------
+// ベースカラー・フォントサイズ・余白
+// --------------------
+// パス指定
+// --------------------
+// ベースフォントとフォント関連(サイズ、文字間)
+
+// --------------------
+// ブレイクポイント
+// --------------------
+// 【2018年版】レスポンシブデザインにおけるブレイクポイントの最適解はこれだ！
+// http://nuconeco.net/responsive-ui-breakpoints/
+$bp-lg: 1280px;// 80em
+$bp-md: 960px;// 60em
+$bp-sm: 600px;// 37.5em
+$bp-xs: 480px;// 30em
+$bp-tablet: 768px;
+$bp-overtablet: 769px;
+
+// --------------------
+// ベースカラー・フォントサイズ・余白
+// :root https://developer.mozilla.org/ja/docs/Web/CSS/:root
+// css custom properties https://developer.mozilla.org/ja/docs/Web/CSS/Using_CSS_custom_properties
+// clamp() https://developer.mozilla.org/ja/docs/Web/CSS/clamp
+// Min-Max-Value Interpolation https://min-max-calculator.9elements.com/
+// プロジェクトによって色が違うことが多いのでプレフィックスはprojectnameを使用
+// --------------------
+// ◆背景色
+// $projectname__bgcolor--***: #5cb85c;
+// 以下色違いを作成。***部分に色の名前を入れる
+// ◆よく使う名称 green gray blue pink yellow cream brown red black
+// ◆明度暗度など light dark ultra deep
+// ◆$projectname__color--***: #cccccc;
+:root {
+  /* color */
+  --white: #ffffff;
+  --blue-deep: #0f54a7;
+  --blue-medium: #1c7cbd;
+  --blue-light: #e4f1fb;
+  --yellow: #ebc22c;
+  --yellow-vivid: #ffe000;
+  --yellow-ultra-light: #fdfbed;
+  --black-deep: #252525;
+  --black-light: #555555;
+  --gray-ultra-light: #f2f2f2;
+  /* font size */
+  --fontsize-body: clamp(0.875rem, 0.792rem + 0.42vw, 1.125rem); /* 14-18px */
+  --fontsize-heading1: clamp(1.375rem, 1.208rem + 0.83vw, 1.875rem); /* 22-30px */
+  --fontsize-heading2: calc(var(--fontsize-body) * 1.5); /* 21-27px */
+  --fontsize-heading3: calc(var(--fontsize-body) * 1.35); /* 18.9-24.3px */
+  --fontsize-heading4: calc(var(--fontsize-body) * 1.15); /* 16.1-20.7px */
+  --fontsize-xl: calc(var(--fontsize-heading1) * 2); /* 44-60px */
+  /* text space */
+  --fontspace-between: 0.05em;
+  /* element space */
+  --space-xs: clamp(1.25rem, 1.042rem + 1.04vw, 1.875rem); /* 20-30px */
+  --space-sm: calc(var(--space-xs) * 1.5); /* 30-45px */
+  --space-md: calc(var(--space-xs) * 2); /* 40-60px */
+  --space-lg: calc(var(--space-xs) * 3); /* 60-90px */
+  --space-xl: calc(var(--space-xs) * 4); /* 80-120px */
+}
+
+// --------------------
+// パス指定
+// --------------------
+// http:https:なし
+// $path_img_common: "//plusput.xsrv.jp/ppr/img/common/";
+// http:あり
+// $path_img_common: "http://example.com/img/common/";
+// https:あり
+// $path_img_common: "https://example.com/img/common/";
+// ***の箇所にカテゴリ等の名称を入れる
+// $path_img_***: "http://example.com/img/***/";
+
+// --------------------
+// ベースフォントとフォント関連(サイズ、文字間)
+// プロジェクトによってサイト内で統一されるのでプレフィックスはprojectnameを使用
+// --------------------
+// ◆ベースの字間(文字と文字の間) letter-spacing
+$baseFontSpace: 0.1rem;
+// ◆ベースフォントファミリー
+// font-familyに指定する2017年春の決定版メモ
+// http://qiita.com/noir010/items/3d5f129ed4a4527dd896
+// 2020年まで使えるfont-familyおすすめゴシック体
+// https://qiita.com/RinoTsuka/items/4181efd43d072e246519
+// おしゃれなWebをつくるには。
+// https://qiita.com/naogify/items/67b934f7aefa16bbe413
+// Font−familyのベストな書き方 2018年改定版
+// https://sole-color-blog.com/blog/1380/
+// font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+// 2018年のfont-family指定
+// https://qiita.com/ln-north/items/21bff624c5d0f8e40fe9
+// font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+// 游ゴシックのfont-family指定方法2018年度版！@font-faceは絶対NG！WindowsのChromでかすれる問題徹底検証
+// ↑どうしても游ゴシックを指定したい場合向け
+// https://wemo.tech/1155
+
+$fontfamily:'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+// フォント例）-ゴシック
+// $alp_fontfamily: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif;
+// $ppr_fontfamily: "Roboto", "Droid Sans", "游ゴシック", "YuGothic", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", sans-serif;
+// 参考：http://css-happylife.com/archives/2012/0108_0000.php
+// $projectname_fontfamily: "メイリオ", "Meiryo", verdana, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;
+// $projectname_fontfamily_ie: "ＭＳ Ｐゴシック", "MS PGothic", Sans-Serif;

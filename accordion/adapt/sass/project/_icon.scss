@@ -1,0 +1,39 @@
+@use "../global" as g;
+
+#svg-def {
+  display: none;
+}
+.svg-glass-ins .parts01,
+.svg-glass-ins .parts02,
+.svg-glass-ins .parts03 {
+  fill: none;
+  stroke: var(--black-deep);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width:2px;
+}
+.svg-pc-ins .parts01,
+.svg-pc-ins .parts02,
+.svg-pc-ins .parts03 {
+  fill: none;
+  stroke: var(--black-deep);
+  stroke-width: 2px;
+}
+.svg-pc-ins .parts01 {
+  stroke-miterlimit: 10;
+}
+.svg-pc-ins .parts02,
+.svg-pc-ins .parts03 {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.svg-mail-ins .parts01,
+.svg-mail-ins .parts02,
+.svg-mail-ins .parts03,
+.svg-mail-ins .parts04 {
+  fill: none;
+  stroke-width: 2px;
+  stroke:var(--black-deep);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

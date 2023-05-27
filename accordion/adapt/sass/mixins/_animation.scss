@@ -1,0 +1,32 @@
+// --------------------
+// keyframe制御アニメーション
+// --------------------
+// https://chaika.hatenablog.com/entry/2015/03/08/144120
+//
+// 使い方
+//
+// 以下で動きを設定
+// @include keyframes(name){ パーセン指定 }
+//
+// 以下で動かす
+// @include animation(name time ease/easein等 time)
+//
+
+@mixin keyframes($animation-name: animation) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+@mixin animation($animation-name) {
+  animation: $animation-name;
+  animation-fill-mode: both;
+}
+@mixin transform($transforms) {
+  transform: $transforms;
+}

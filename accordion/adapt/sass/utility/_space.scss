@@ -1,0 +1,30 @@
+// クラスを追加したい場合、falseをtrueに変更
+// クラスが100px分まで必要な場合は10を20に変更
+$space_class: true !default;
+$space_padding: true !default;
+$space_endvalue: 10 !default;
+
+// _setting.scssの余白調整用変数をtrueにすると生成
+// margin-topとmargin-bottomが0〜50pxまで5px単位で生成
+// padding-topとpadding-bottomが0〜50pxまで5px単位で生成
+
+@if $space_class {
+  @for $i from 0 through $space_endvalue {
+    // インターポレーション  #{...}
+    // Sass の式の結果を CSS に埋め込む（挿入する）ための構文
+    .mt#{$i * 5} {
+      margin-top: 5px * $i !important;
+    }
+    .mb#{$i * 5} {
+      margin-bottom: 5px * $i !important;
+    }
+    @if $space_padding {
+      .pt#{$i * 5} {
+        padding-top: 5px * $i !important;
+      }
+      .pb#{$i * 5} {
+        padding-bottom: 5px * $i !important;
+      }
+    }
+  }
+}

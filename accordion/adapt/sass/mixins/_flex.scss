@@ -1,0 +1,10 @@
+@use "../global" as g;
+@use "mediaquery" as m;
+
+@mixin flex {
+  display: flex;
+  flex-direction: column;
+  @include m.media02(tablet) {
+    flex-direction: row;
+  }
+}

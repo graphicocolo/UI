@@ -1,0 +1,9 @@
+@use "../global" as g;
+@use "mediaquery" as m;
+
+@mixin visible {
+  display: none;
+  @include m.media02(tablet) {
+    display: block;
+  }
+}
