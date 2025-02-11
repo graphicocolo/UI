@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>link</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="pagetop">
+  <p><a href="index.html">トップページへ</a></p>
+  <ul>
+    <li><a href="#pi-column01" class="internal-link">pi-column01</a></li>
+    <li><a href="#pi-column02" class="internal-link">pi-column02</a></li>
+  </ul>
+  <div style="height: 500px;">
+    <p>間の要素</p>
+  </div>
+  <section id="pi-column01">
+    <h1 id="pi-title01" class="sec-title"><p class="sec-title-text">pi-content01 title</p><p class="icon-circle"><span></span></p></h1>
+    <div id="pi-content01" style="background-color: rgb(233, 240, 250);">
+      <p>pi-content01 content</p>
+    </div>
+  </section>
+  <div style="height: 500px;">
+    <p>間の要素</p>
+  </div>
+  <section id="pi-column02">
+    <h1 id="pi-title02" class="sec-title"><p class="sec-title-text">pi-content02 title</p><p class="icon-circle"><span></span></p></h1>
+    <div id="pi-content02" style="background-color: rgb(233, 240, 250);">
+      <p>pi-content02 content</p>
+    </div>
+  </section>
+  <div style="height: 500px;">
+    <p>間の要素</p>
+  </div>
+  <p><a href="#pagetop">ページトップへ</a></p>
+
+  <script>
+    // その4
+    document.addEventListener("DOMContentLoaded", () => {
+      // アコーディオンを開く（外部・内部リンク遷移用）
+      const openAccordion = (titleId, contentId) => {
+        let content = document.getElementById(contentId);
+        let title = document.getElementById(titleId);
+        content.style.maxHeight = content.scrollHeight + "px"; // 開く
+        title.classList.add("open"); // アイコンをマイナスにする
+      };
+
+      // アコーディオンの開閉処理
+      const toggleAccordion = (titleId, contentId) => {
+        document.getElementById(titleId).addEventListener("click", () => {
+          let content = document.getElementById(contentId);
+          let title = document.getElementById(titleId);
+
+          if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+            content.style.maxHeight = "0"; // 閉じる
+            title.classList.remove("open"); // アイコンをプラスに戻す
+          } else {
+            openAccordion(titleId, contentId);
+          }
+        });
+      };
+
+      // URLのハッシュを取得し、該当する要素をアニメーション付きで開く
+      const hash = window.location.hash;
+      if (hash === "#pi-column01") {
+        openAccordion("pi-title01", "pi-content01");
+      } else if (hash === "#pi-column02") {
+        openAccordion("pi-title02", "pi-content02");
+      }
+
+      toggleAccordion("pi-title01", "pi-content01");
+      toggleAccordion("pi-title02", "pi-content02");
+
+      // 内部リンククリック時の動作
+      document.querySelectorAll(".internal-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          let targetId = this.getAttribute("href").substring(1); // "#pi-column01" → "pi-column01"
+          let targetContent = document.getElementById(`pi-content${targetId.slice(-2)}`);
+          let targetTitle = document.getElementById(`pi-title${targetId.slice(-2)}`);
+
+          if (targetContent.style.maxHeight === "0px" || !targetContent.style.maxHeight) {
+            e.preventDefault(); // 通常のアンカー動作を防ぐ
+            openAccordion(targetTitle.id, targetContent.id);
+            setTimeout(() => {
+              window.location.hash = targetId; // 遷移
+            }, 0);
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

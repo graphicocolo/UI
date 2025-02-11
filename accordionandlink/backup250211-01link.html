@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>link</title>
+  <style>
+    /* 初期状態は非表示 */
+    #content01, #content02 {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><a href="link.html#content01">content01</a></li>
+    <li><a href="link.html#content02">content02</a></li>
+  </ul>
+  <div id="column01">
+    <h1 id="title01">content01 title</h1>
+    <div id="content01" style="background-color: rgb(233, 240, 250);">
+      <p>content01 content</p>
+    </div>
+  </div>
+  <div id="column02">
+    <h1 id="title02">content02 title</h1>
+    <div id="content02" style="background-color: rgb(233, 240, 250);">
+      <p>content02 content</p>
+    </div>
+  </div>
+
+  <!-- <script>
+    // index.html から遷移した直後も、アニメーションありで開いた状態にする
+    // DOMContentLoaded は、HTMLが完全に解析され、DOMツリーが構築されたタイミングで発火するイベント
+    // window.onload よりも早く実行できる
+    // window.onload という似たイベントもありますが、window.onload は 画像やCSSなどのすべてのリソースが読み込まれた後 に実行されます。
+    // DOMContentLoaded のほうが早く発火する ため、ページの表示速度を向上させるのに役立ちます。
+    document.addEventListener("DOMContentLoaded", function() {
+      // URLのハッシュを取得し、該当する要素を表示（アニメーションありで即座に開く）
+      const hash = window.location.hash;
+      if (hash === "#column01") {
+        let content = document.getElementById("content01");
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else if (hash === "#column02") {
+        let content = document.getElementById("content02");
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+
+      // アコーディオンのトグル機能を実装
+      function toggleAccordion(titleId, contentId) {
+        document.getElementById(titleId).addEventListener("click", function() {
+          let content = document.getElementById(contentId);
+          if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+            content.style.maxHeight = "0"; // 閉じる
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px"; // 開く
+          }
+        });
+      }
+
+      toggleAccordion("title01", "content01");
+      toggleAccordion("title02", "content02");
+    });
+  </script> -->
+
+  <script>
+    // index.html から遷移した直後は、アニメーションなしで開いた状態にする
+    document.addEventListener("DOMContentLoaded", function() {
+      // URLのハッシュを取得
+      const hash = window.location.hash;
+      let targetContent = null;
+
+      if (hash === "#column01") {
+        targetContent = document.getElementById("content01");
+      } else if (hash === "#column02") {
+        targetContent = document.getElementById("content02");
+      }
+
+      // ハッシュがある場合、即座に開く（アニメーションなし）
+      if (targetContent) {
+        targetContent.style.transition = "none";  // アニメーション無効化
+        targetContent.style.maxHeight = "none";   // 制限なしで全開
+        setTimeout(() => {
+          targetContent.style.transition = "max-height 0.5s ease-out"; // アニメーション復活
+          targetContent.style.maxHeight = targetContent.scrollHeight + "px"; // 高さ設定
+        }, 10);  // 適用タイミングを遅らせる
+      }
+
+      // アコーディオンのトグル機能
+      function toggleAccordion(titleId, contentId) {
+        document.getElementById(titleId).addEventListener("click", function() {
+          let content = document.getElementById(contentId);
+          if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+            content.style.maxHeight = "0"; // 閉じる
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px"; // 開く
+          }
+        });
+      }
+
+      toggleAccordion("title01", "content01");
+      toggleAccordion("title02", "content02");
+    });
+  </script>
+</body>
+</html>
